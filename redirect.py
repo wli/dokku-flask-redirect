@@ -8,8 +8,8 @@ app = Flask(__name__)
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
-def redirect(path):
+def redirect_route(path):
     if 'REDIRECT_URL' in os.environ:
         return redirect(os.environ['REDIRECT_URL'], code=302)
 
-    return 'Hello, World!'
+    return 'Redirect not set!'
