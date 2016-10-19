@@ -1,7 +1,15 @@
 from flask import Flask
+from flask import redirect
+import os
+
+
 app = Flask(__name__)
 
 
-@app.route('/')
-def hello_world():
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def redirect(path):
+    if 'REDIRECT_URL' in os.environ:
+        return redirect(os.environ['REDIRECT_URL'], code=302)
+
     return 'Hello, World!'
