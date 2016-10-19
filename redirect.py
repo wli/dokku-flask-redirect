@@ -12,4 +12,5 @@ def redirect_route(path):
     if 'REDIRECT_URL' in os.environ:
         return redirect(os.environ['REDIRECT_URL'], code=302)
 
-    return 'Redirect not set!'
+    return ('Redirect not set. Please make sure you set the '
+            'REDIRECT_URL environment variable')
